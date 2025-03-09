@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merit Scholarship Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, button {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Merit-Based Scholarship Application</h1>
+        <form action="process_application.php" method="POST" enctype="multipart/form-data">
+            
+            <label for="user_id">User ID:</label>
+            <input type="text" name="user_id" id="user_id" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            
+            <label for="full_name">Full Name:</label>
+            <input type="text" name="full_name" id="full_name" required>
+
+            <label for="branch">Branch:</label>
+            <input type="text" name="branch" id="branch" required>
+            
+            <label for="year">Year:</label>
+            <input type="number" name="year" id="year" required>
+
+            <label for="feesReceipt">Upload Fees Receipt (PDF):</label>
+            <input type="file" name="feesReceipt" id="feesReceipt" accept=".pdf" required>
+
+            <label for="admissionForm">Upload Admission Form (PDF):</label>
+            <input type="file" name="admissionForm" id="admissionForm" accept=".pdf" required>
+
+            <label for="bankXerox">Upload Bank Xerox (PDF):</label>
+            <input type="file" name="bankXerox" id="bankXerox" accept=".pdf" required>
+
+            <label for="bankAccNo">Bank Account Number:</label>
+            <input type="text" name="bankAccNo" id="bankAccNo" required>
+
+            <label for="bankName">Bank Name:</label>
+            <input type="text" name="bankName" id="bankName" required>
+
+            <label for="bankBranch">Bank Branch:</label>
+            <input type="text" name="bankBranch" id="bankBranch" required>
+
+            <label for="accHolderName">Account Holder Name:</label>
+            <input type="text" name="accHolderName" id="accHolderName" required>
+
+            <label for="ifsc">IFSC Code:</label>
+            <input type="text" name="ifsc" id="ifsc" required>
+
+            <label for="mobile_number">Mobile Number:</label>
+            <input type="tel" name="mobile_number" id="mobile_number" pattern="[0-9]{10}" required>
+
+            <button type="submit">Submit Application</button>
+        </form>
+    </div>
+</body>
+</html>

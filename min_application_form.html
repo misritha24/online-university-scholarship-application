@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Application Form</title>
+    <style>
+        /* Background Image */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('bg_reg.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Form Container */
+        .application-container {
+            width: 50%;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form Heading */
+        h2 {
+            text-align: center;
+            color: #1C3FAA;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        /* Labels */
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Input Fields */
+        input[type="text"], input[type="date"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+        }
+
+        /* Input Glow Effect */
+        input[type="text"]:hover, input[type="date"]:hover, input[type="file"]:hover,
+        input[type="text"]:focus, input[type="date"]:focus, input[type="file"]:focus {
+            border: 2px solid #1C3FAA;
+            box-shadow: 0 0 8px rgba(28, 63, 170, 0.5);
+            outline: none;
+        }
+
+        /* Error Message */
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Submit Button with Animation */
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #E87722, #1C3FAA);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.5s ease-in-out;
+        }
+
+        /* Hover Effect for Submit Button */
+        .submit-btn:hover {
+            background: linear-gradient(45deg, #1C3FAA, #E87722);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="application-container">
+        <h2>Scholarship Application Form</h2>
+        <form id="scholarship-form" action="min_form.php" method="POST" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="reg_no">Registration Number:</label>
+            <input type="text" id="reg_no" name="registration_number" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="university">University Name:</label>
+            <input type="text" id="university" name="university_name" required>
+            <div class="error" id="university-error">Only "Vignan University" is allowed.</div>
+
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            
+
+            <label for="father_income">Father's Income:</label>
+            <input type="text" id="father_income" name="father_income" required>
+            <div class="error" id="income-error">Father's income must not exceed ₹8,00,000.</div>
+
+            <label for="father_occupation">Father's Occupation:</label>
+            <input type="text" id="father_occupation" name="father_occupation" required>
+
+            <h3>Upload Documents</h3>
+            <label for="income_cert">Income Certificate of Parents:</label>
+            <input type="file" id="income_cert" name="income_certificate" required>
+
+            <label for="student_pan">Student's PAN Card (Optional):</label>
+            <input type="file" id="student_pan" name="student_pan_card">
+
+            <label for="father_pan">Father's PAN Card:</label>
+            <input type="file" id="father_pan" name="father_pan_card" required>
+
+            <label for="mother_pan">Mother's PAN Card (Optional):</label>
+            <input type="file" id="mother_pan" name="mother_pan_card">
+
+            <label for="aadhar">Aadhar Card:</label>
+            <input type="file" id="aadhar" name="aadhar_card" required>
+
+            <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("father_income").addEventListener("input", function () {
+            let incomeField = document.getElementById("father_income");
+            let incomeError = document.getElementById("income-error");
+            let income = parseFloat(incomeField.value.replace(/,/g, "")); // Remove commas
+
+            if (!isNaN(income) && income > 800000) {
+                incomeError.style.display = "block";
+            } else {
+                incomeError.style.display = "none";
+            }
+        });
+
+        document.getElementById("university").addEventListener("input", function () {
+            let universityField = document.getElementById("university");
+            let universityError = document.getElementById("university-error");
+
+            if (universityField.value.trim().toLowerCase() !== "vignan university") {
+                universityError.style.display = "block";
+            } else {
+                universityError.style.display = "none";
+            }
+        });
+
+        document.getElementById("scholarship-form").addEventListener("submit", function (event) {
+            let income = parseFloat(document.getElementById("father_income").value.replace(/,/g, ""));
+            let university = document.getElementById("university").value.trim().toLowerCase();
+            let isValid = true;
+
+            if (!isNaN(income) && income > 800000) {
+                document.getElementById("income-error").style.display = "block";
+                isValid = false;
+            }
+
+            if (university !== "vignan university") {
+                document.getElementById("university-error").style.display = "block";
+                isValid = false;
+            }
+
+            if (!isValid) {
+                event.preventDefault(); // Stop form submission if validation fails
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vignan University International Scholarship Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            background: url('bg.png') no-repeat center center/cover;
+            padding: 20px;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: all 0.3s ease-in-out;
+        }
+        /* Glowing effect on focus */
+        input:focus, textarea:focus, select:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+            outline: none;
+        }
+        /* H3 headings in red with a shadow effect */
+        h3 {
+            color: red;
+            text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.5);
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Vignan University International Scholarship Application</h2>
+    <form action="process_scholarship.php" method="POST" enctype="multipart/form-data">
+        <h3>1. Personal Information</h3>
+        <input type="text" name="userid" placeholder="User ID" required>
+        <input type="text" name="password" placeholder="Password" required>
+        <input type="text" name="first_name" placeholder="First Name" required>
+        <input type="text" name="last_name" placeholder="Last Name" required>
+        <input type="date" name="date_of_birth" required>
+        <select name="nationality" required>
+            <option value="">Select Nationality</option>
+            <option value="Sudan">Sudan</option>
+            <option value="Zimbabwe">Zimbabwe</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Kenya">Kenya</option>
+            <option value="Other">Other</option>
+        </select>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="phone_number" placeholder="Phone Number (with country code)" required>
+
+        <h3>2. Academic Information</h3>
+        <input type="text" name="highest_qualification" placeholder="Highest Qualification" required>
+        <input type="text" name="previous_institution" placeholder="Previous Institution" required>
+        <input type="text" name="grade_or_percentage" placeholder="Grade or Percentage" required>
+        <label>Upload Academic Transcripts:</label>
+        <input type="file" name="transcript_upload" accept=".pdf" required>
+
+        <h3>3. Language Proficiency</h3>
+        <select name="language_proficiency" required>
+            <option value="">Select Language Proficiency Test</option>
+            <option value="TOEFL">TOEFL</option>
+            <option value="IELTS">IELTS</option>
+            <option value="Other">Other</option>
+        </select>
+        <input type="text" name="proficiency_score" placeholder="Proficiency Test Score" required>
+        <label>Upload Language Certificate:</label>
+        <input type="file" name="language_certificate" accept=".pdf" required>
+
+        <h3>4. Scholarship Details</h3>
+        <select name="scholarship_type" required>
+            <option value="">Select Scholarship Type</option>
+            <option value="Merit-based">Merit-based</option>
+            <option value="Need-based">Need-based</option>
+            <option value="Program-specific">Program-specific</option>
+        </select>
+        <textarea name="personal_statement" placeholder="Personal Statement or Motivation Letter" required></textarea>
+        <label>Upload Recommendation Letter:</label>
+        <input type="file" name="recommendation_letter" accept=".pdf" required>
+
+        <h3>5. Agreement and Declaration</h3>
+        <input type="checkbox" name="terms_and_conditions" required> I agree to the terms and conditions
+        <br><br>
+        <input type="submit" value="Submit Application">
+    </form>
+
+</body>
+</html>

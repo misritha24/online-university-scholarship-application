@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Donation Amount</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    input[type="number"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Enter Donation Amount</h2>
+    <form action="donation_process.php" method="post">
+      <!-- Pass the application ID as a hidden field -->
+      <input type="hidden" name="application_id" value="<?php echo htmlspecialchars($_GET['id'] ?? ''); ?>">
+      <label for="donation_amount">Donation Amount:</label><br>
+      <input type="number" id="donation_amount" name="donation_amount" required min="1"><br>
+      <button type="submit">Proceed to Pay</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Need-Based Scholarship Form</title>
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          background: url('need-bg.png') no-repeat center center/cover;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          overflow: hidden;
+      }
+      .form-container {
+          background: rgba(255, 255, 255, 0.9);
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          max-width: 600px;
+          width: 100%;
+          height: 90vh;
+          overflow-y: auto;
+          position: relative;
+      }
+      .form-container h2 {
+          text-align: center;
+          color: #333;
+          position: sticky;
+          top: 0;
+          background: rgba(255, 255, 255, 0.9);
+          padding: 10px 0;
+          z-index: 1;
+          border-bottom: 1px solid #ddd;
+      }
+      .form-group {
+          margin-bottom: 15px;
+      }
+      .form-group label {
+          display: block;
+          color: #555;
+          margin-bottom: 5px;
+      }
+      .form-group input[type="text"],
+      .form-group input[type="number"],
+      .form-group textarea,
+      .form-group select {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          box-sizing: border-box;
+          transition: all 0.3s ease-in-out;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+          border-color: #ff00ff;
+          box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+          outline: none;
+          background: rgba(255, 240, 245, 0.9);
+      }
+      .form-group textarea {
+          resize: vertical;
+          min-height: 100px;
+      }
+      .form-group input[type="file"] {
+          border: none;
+      }
+      .form-group input[type="checkbox"] {
+          margin-right: 10px;
+      }
+      .form-group button {
+          background: #4CAF50;
+          color: white;
+          border: none;
+          padding: 10px 15px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+      }
+      .form-group button:hover {
+          background: #45a049;
+          transform: scale(1.05);
+      }
+      .optional {
+          color: #777;
+          font-size: 0.9em;
+      }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+      <h2>Need-Based Scholarship Application</h2>
+      <form action="submit_form.php" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+              <label for="fullName">Full Name:</label>
+              <input type="text" id="fullName" name="fullName" required maxlength="100">
+          </div>
+
+          <div class="form-group">
+              <label for="studentID">Student ID:</label>
+              <input type="text" id="studentID" name="studentID" required maxlength="15">
+          </div>
+
+          <div class="form-group">
+              <label for="mobileNumber">Mobile Number:</label>
+              <input type="text" id="mobileNumber" name="mobileNumber" required pattern="\d{10}" maxlength="10" title="Enter a valid 10-digit number">
+          </div>
+
+          <div class="form-group">
+              <label for="branch">Branch:</label>
+              <select id="branch" name="branch" required>
+                  <option value="">Select Branch</option>
+                  <option value="CSE">Computer Science</option>
+                  <option value="ECE">Electronics & Communication</option>
+                  <option value="EEE">Electrical & Electronics</option>
+                  <option value="MECH">Mechanical</option>
+                  <option value="CIVIL">Civil</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+              <label for="year">Year of Study:</label>
+              <select id="year" name="year" required>
+                  <option value="">Select Year</option>
+                  <option value="1st">1st Year</option>
+                  <option value="2nd">2nd Year</option>
+                  <option value="3rd">3rd Year</option>
+                  <option value="4th">4th Year</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+              <label for="reason">Reason for Financial Help:</label>
+              <select id="reason" name="reason" required>
+                  <option value="">Select Reason</option>
+                  <option value="College Fees">College Fees</option>
+                  <option value="Exam Fees">Exam Fees</option>
+                  <option value="Books and Materials">Books and Study Materials</option>
+                  <option value="Hostel Fees">Hostel Fees</option>
+                  <option value="Medical Expenses">Emergency Medical Expenses</option>
+                  <option value="Others">Others</option>
+              </select>
+          </div>
+
+          <div class="form-group">
+              <label for="description">Description of Need:</label>
+              <textarea id="description" name="description" required maxlength="500"></textarea>
+          </div>
+
+          <div class="form-group">
+              <label for="amount_required">Amount Required:</label>
+              <input type="number" id="amount_required" name="amount_required" placeholder="Enter the amount required">
+          </div>
+
+          <div class="form-group">
+              <label for="supportDocs">Supporting Documents (PDF/DOCX only):</label>
+              <input type="file" id="supportDocs" name="supportDocs[]" multiple required accept=".pdf, .docx">
+          </div>
+
+          <div class="form-group">
+              <label for="phonepeScanner">PhonePe Scanner (Optional, PDF/DOCX only):</label>
+              <input type="file" id="phonepeScanner" name="phonepeScanner" accept=".pdf, .docx">
+          </div>
+
+          <h3>Optional Bank Details <span class="optional">(Optional)</span></h3>
+          <div class="form-group">
+              <label for="bankAccNo">Bank Account Number:</label>
+              <input type="text" id="bankAccNo" name="bankAccNo" pattern="\d{9,18}" title="Enter a valid bank account number">
+          </div>
+
+          <div class="form-group">
+              <label for="bankName">Bank Name:</label>
+              <input type="text" id="bankName" name="bankName" maxlength="100">
+          </div>
+
+          <div class="form-group">
+              <label for="accHolderName">Account Holder Name:</label>
+              <input type="text" id="accHolderName" name="accHolderName" maxlength="100">
+          </div>
+
+          <div class="form-group">
+              <label for="ifsc">IFSC Code:</label>
+              <input type="text" id="ifsc" name="ifsc" pattern="[A-Z]{4}0[A-Z0-9]{6}" maxlength="11" title="Enter a valid IFSC Code">
+          </div>
+
+          <div class="form-group">
+              <input type="checkbox" id="declaration" name="declaration" required>
+              <label for="declaration">I declare that all the details provided are true and accurate.</label>
+          </div>
+
+          <div class="form-group">
+              <button type="submit">Submit Application</button>
+          </div>
+      </form>
+  </div>
+
+</body>
+</html>

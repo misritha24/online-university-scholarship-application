@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Types</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('types.png'); /* Set your background image here */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgba(0, 123, 255, 0.8); /* Semi-transparent navbar */
+            padding: 10px;
+            color: white;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #0056b3;
+            border-radius: 5px;
+        }
+        .content {
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 20px;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+        .scholarship-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .scholarship-type {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .scholarship-type:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .scholarship-type h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .scholarship-type ul {
+            text-align: left;
+            margin: 15px 0;
+            padding-left: 20px;
+            color: #555;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="landingpage.html">Home</a>
+        <a href="scholarshiptype.html">Scholarships</a>
+        <a href="information.html">Information</a>
+        <a href="contactus.html">Contact Us</a>
+    </div>
+    <div class="content">
+        <h1>Scholarship Types</h1>
+
+        <div class="scholarship-grid">
+            <div class="scholarship-type">
+                <h2>Merit-Based Scholarship</h2>
+                <ul>
+                    <li>Eligibility: High academic performance.</li>
+                    <li>Minimum GPA: 3.5 or above.</li>
+                    <li>Recommendation letters required.</li>
+                </ul>
+                <a href="http://localhost/zoo/merit-scholar.php" class="button">View Scholarships</a>
+                <a href="viewstatus.html" class="button">View Status</a>
+            </div>
+
+            <div class="scholarship-type">
+                <h2>Need-Based Scholarship</h2>
+                <ul>
+                    <li>Eligibility: Demonstrated financial need.</li>
+                    <li>Income proof required.</li>
+                    <li>Statement of purpose required.</li>
+                </ul>
+                <a href="need-scholar.html" class="button">View Scholarships</a>
+                <a href="donate.php" class="button">donate</a>
+
+            </div>
+
+            <div class="scholarship-type">
+                <h2>International Scholarship</h2>
+                <ul>
+                    <li>Eligibility: Open to international students.</li>
+                    <li>Minimum GPA: 3.0 or equivalent.</li>
+                    <li>Proof of language proficiency required.</li>
+                </ul>
+                <a href="inter_form.html" class="button">View Scholarships</a>
+                <a href="view_statusss.html" class="button">View Status</a>
+            </div>
+
+            <div class="scholarship-type">
+                <h2>Minority Scholarship</h2>
+                <ul>
+                    <li>Eligibility: Open to minority group members.</li>
+                    <li>Community involvement required.</li>
+                    <li>Recommendation letters required.</li>
+                </ul>
+                <a href="min_dashboard.php" class="button">View Scholarships</a>
+                <a href="view_statussss.html" class="button">View Status</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function viewScholarshipDetails(type) {
+            alert(`Redirecting to details for ${type} scholarships.`);
+            // Implement redirection logic, e.g., window.location.href = `scholarshipdetails.html?type=${type}`;
+        }
+    </script>
+</body>
+</html>
